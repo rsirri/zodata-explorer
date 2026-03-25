@@ -51,11 +51,25 @@
                             <Label text="Description"/>
                             <Text text="{/Description}"/>
 
-                            <Label text="Service URL"/>
+                            <!-- <Label text="Service URL"/>
                             <Link text="{/ServiceUrl}" href="{/ServiceUrl}" target="_blank"/>
 
                             <Label text="Metadata URL"/>
-                            <Link text="{/MetadataUrl}" href="{/MetadataUrl}" target="_blank"/>
+                            <Link text="{/MetadataUrl}" href="{/MetadataUrl}" target="_blank"/> -->
+
+                            <Label text="Service URL"/>
+                            <Link 
+                                text="{= ${/ServiceUrl} ? ${/ServiceUrl} : 'Not available'}"
+                                href="{/ServiceUrl}"
+                                target="_blank"
+                                enabled="{= !!${/ServiceUrl}}"/>
+
+                            <Label text="Metadata URL"/>
+                            <Link 
+                                text="{= ${/MetadataUrl} ? ${/MetadataUrl} : 'Not available for V4 services'}"
+                                href="{/MetadataUrl}"
+                                target="_blank"
+                                enabled="{= !!${/MetadataUrl}}"/>
 
                             <Label text="Service Type"/>
                             <Text text="{/ServiceType}"/>

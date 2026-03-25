@@ -41,8 +41,16 @@ export default class View3 extends Controller {
             .getModel("selectedService") as JSONModel;
         this.getView()?.setModel(serviceModel);
 
+        const metadataUrl = serviceModel.getProperty("/MetadataUrl");
+
+        // V4 services don't have MetadataUrl — skip entity sets fetch
+        if (!metadataUrl) {
+            serviceModel.setProperty("/entitySets", []);
+            return;  // ← exit early, don't crash
+        }
+
         try {
-            const metadataUrl = serviceModel.getProperty("/MetadataUrl");
+            
             const url = new URL(metadataUrl);
             const relativePath = url.pathname;
 
@@ -70,7 +78,13 @@ export default class View3 extends Controller {
     }
 
     onNavBack(): void {
+        const serviceModel = (this.getOwnerComponent() as UIComponent)
+            .getModel("selectedService") as JSONModel;
+        const serviceType = serviceModel.getProperty("/ServiceType");
+        const type = serviceType === "V4" ? "v4" : "v2";
+        
         (this.getOwnerComponent() as UIComponent)
-            .getRouter().navTo("RouteView2", { type: "v2" });
+            .getRouter().navTo("RouteView2", { type: type });
     }
+    
 }
