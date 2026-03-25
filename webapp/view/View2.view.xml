@@ -1,0 +1,42 @@
+<mvc:View controllerName="com.kiewit.zodataexplorer.controller.View2"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+
+    <Page id="idPageView2" title="{/title}" showNavButton="true" navButtonPress=".onNavBack">
+
+        <Table id="idServiceTable" items="{/services}" growing="true" growingThreshold="20">
+        
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{/title}" />
+                    <Text text="{= '(' + ${/services}.length + ' services)'}"/>
+                    <ToolbarSpacer />
+                    <SearchField id="idSerach" placeholder="Search services..." width="30%" search=".onSearch"></SearchField>
+                </Toolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column><Text text="Service Name"/></Column>
+                <Column><Text text="Description"/></Column>
+                <Column><Text text="Service Type"/></Column>
+                <Column><Text text="SAP Service"/></Column>
+            </columns>
+
+            <items>
+                <ColumnListItem type="Active" press=".onServicePress">
+                    <cells>
+                        <Text text="{TechnicalServiceName}"/>
+                        <Text text="{Description}"/>
+                        <Text text="{ServiceType}"/>
+                        <!-- <Text text="{IsSapService}"/> -->
+                        <ObjectStatus text="{=${IsSapService} ? 'SAP Standard' : 'Custom (Z*)'}" 
+                                      state="{=${IsSapService} ? 'Success' : 'Warning'}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        
+        </Table>
+
+    </Page>
+
+</mvc:View>

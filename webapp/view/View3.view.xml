@@ -1,0 +1,9 @@
+<mvc:View controllerName="com.kiewit.zodataexplorer.controller.View3"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+
+    <Page id="idPageView3" title="{/title}" showNavButton="true" navButtonPress=".onNavBack">
+
+    </Page>
+
+</mvc:View>

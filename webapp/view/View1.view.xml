@@ -1,0 +1,21 @@
+<mvc:View controllerName="com.kiewit.zodataexplorer.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" showHeader="true">
+
+        <VBox alignItems="Center" justifyContent="Center" class="sapUiLargeMarginTop">
+
+            <Title text="OData Service Explorer" level="H1" class="sapUiLargeMarginBottom"></Title>
+            <Text text="Select service type to explore" class="sapUiMediumMarginBottom"></Text>
+
+            <HBox justifyContent="Center" class="sapUiLargeMarginTop">
+            
+                <Button id="idBtnV2" text="V2 Services" type="Emphasized" icon="sap-icon://database" press=".onV2Press" style="width: 150px; height: 50px;" class="sapUiMediumMarginEnd" />
+                <Button id="idBtnV4" text="V4 Services" type="Emphasized" icon="sap-icon://database" press=".onV4Press" style="width: 150px; height: 50px;" class="sapUiMediumMarginEnd" />
+            
+            </HBox>
+
+        </VBox>
+
+    </Page>
+</mvc:View>
