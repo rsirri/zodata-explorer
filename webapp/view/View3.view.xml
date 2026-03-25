@@ -1,8 +1,95 @@
 <mvc:View controllerName="com.kiewit.zodataexplorer.controller.View3"
-        xmlns:mvc="sap.ui.core.mvc"
-        xmlns="sap.m">
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
 
-    <Page id="idPageView3" title="{/title}" showNavButton="true" navButtonPress=".onNavBack">
+    <Page id="idPageView3"
+          title="{/TechnicalServiceName}"
+          showNavButton="true"
+          navButtonPress=".onNavBack">
+
+        <ObjectHeader
+            title="{/TechnicalServiceName}"
+            intro="OData V2 Service"
+            number="{/ServiceType}">
+
+            <attributes>
+                <ObjectAttribute
+                    title="Description"
+                    text="{/Description}"/>
+                <ObjectAttribute
+                    title="Service URL"
+                    text="{/ServiceUrl}"/>
+            </attributes>
+
+            <statuses>
+                <ObjectStatus
+                    title="Type"
+                    text="{= ${/IsSapService} ? 'SAP Standard' : 'Custom (Z*)'}"
+                    state="{= ${/IsSapService} ? 'Success' : 'Warning'}"/>
+            </statuses>
+
+        </ObjectHeader>
+
+        <IconTabBar id="idTabBar">
+            <items>
+
+                <!-- Tab 1 - Service Info -->
+                <IconTabFilter
+                    icon="sap-icon://detail-view"
+                    text="Service Info">
+                    <f:SimpleForm
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                        <f:content>
+                            <Label text="Service ID"/>
+                            <Text text="{/ID}"/>
+
+                            <Label text="Technical Name"/>
+                            <Text text="{/TechnicalServiceName}"/>
+
+                            <Label text="Description"/>
+                            <Text text="{/Description}"/>
+
+                            <Label text="Service URL"/>
+                            <Link text="{/ServiceUrl}" href="{/ServiceUrl}" target="_blank"/>
+
+                            <Label text="Metadata URL"/>
+                            <Link text="{/MetadataUrl}" href="{/MetadataUrl}" target="_blank"/>
+
+                            <Label text="Service Type"/>
+                            <Text text="{/ServiceType}"/>
+
+                            <Label text="Version"/>
+                            <Text text="{/TechnicalServiceVersion}"/>
+                        </f:content>
+                    </f:SimpleForm>
+                </IconTabFilter>
+
+                <!-- Tab 2 - Entity Sets -->
+                <IconTabFilter
+                    icon="sap-icon://table-view"
+                    text="Entity Sets"
+                    id="idEntitySetsTab">
+                    <Table id="idEntityTable"
+                           items="{/entitySets}">
+                        <columns>
+                            <Column><Text text="Entity Set Name"/></Column>
+                            <Column><Text text="Entity Type"></Text></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{name}"/>
+                                    <Text text="{entityType}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </IconTabFilter>
+
+            </items>
+        </IconTabBar>
 
     </Page>
 

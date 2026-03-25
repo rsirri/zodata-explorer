@@ -69,9 +69,11 @@ export default class View2 extends Controller {
     }
 
     onServicePress(event: Event): void {
-        const row = (event as any).getParameter("listItem") as ColumnListItem;
+        const row = event.getSource() as ColumnListItem;  // ← getSource() not getParameter
         const ctx = row.getBindingContext();
         const service = ctx?.getObject();
+
+        if (!service) return;
 
         const jsonModel = new JSONModel();
         jsonModel.setData(service);
