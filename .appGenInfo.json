@@ -1,0 +1,23 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon Mar 30 2026 14:26:52 GMT-0500 (Central Daylight Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://s4h.pinnacle-consulting.com:44301/sap/opu/odata4/iwbep/all/default/iwfnd/catalog/0001/",
+    "appName": "zodata-explorer",
+    "appTitle": "OData Service Explorer",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.37",
+    "enableEslint": false,
+    "enableTypeScript": true,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.4",
+    "template": "Basic V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
