@@ -8,3 +8,8 @@ mta-*
 resources
 archive.zip
 .*_mta_build_tmp
+zodata-explorer-original/
+
+zodata-explorer.zip
+
+ui5-local.yaml
